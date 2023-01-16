@@ -11,7 +11,7 @@ let snake = {
   dx: grid,
   dy: 0,
   cells: [],
-  maxCells: 4,
+  maxCells: 1,
 };
 let apple = {
   x: 160,
@@ -21,20 +21,6 @@ let apple = {
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
-const speed = document.getElementById('speed');
-
-const changeSpeed = () => {
-  const speedValue = speed.value;
-  if (speedValue === 'fast') {
-    userSpeed = 1;
-  } else if (speedValue === 'medium') {
-    userSpeed = 3;
-  } else if (speedValue === 'slow') {
-    userSpeed = 5;
-  } else if (speedValue === 'turtle') {
-    userSpeed = 9;
-  }
-};
 
 function loop() {
   requestAnimationFrame(loop);
@@ -117,3 +103,35 @@ document.addEventListener('keydown', function (e) {
 });
 
 requestAnimationFrame(loop);
+
+const speed = document.getElementById('speed');
+const changeSpeed = () => {
+  const speedValue = speed.value;
+  if (speedValue === 'fast') {
+    userSpeed = 1;
+  } else if (speedValue === 'medium') {
+    userSpeed = 3;
+  } else if (speedValue === 'slow') {
+    userSpeed = 5;
+  } else if (speedValue === 'turtle') {
+    userSpeed = 9;
+  }
+};
+
+const size = document.getElementById('size');
+const changeSize = () => {
+  const sizeValue = size.value;
+  if (sizeValue === 'bigBoard') {
+    canvas.width = 650;
+    canvas.height = 650;
+  } else if (sizeValue === 'mediumBoard') {
+    canvas.width = 500;
+    canvas.height = 500;
+  } else if (sizeValue === 'smallBoard') {
+    canvas.width = 350;
+    canvas.height = 350;
+  } else if (sizeValue === 'tinyBoard') {
+    canvas.width = 200;
+    canvas.height = 200;
+  }
+};
