@@ -40,8 +40,13 @@ const loop = () => {
   }
   count === 0;
 
+  // to clear the entire canvas
   context.clearRect(0, 0, canvas.width, canvas.height);
 };
+
+// snake movement
+snake.x += snake.dx;
+snake.y += snake.dy;
 
 // drawing an apple
 context.fillStyle = 'red';
@@ -51,4 +56,13 @@ context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
 context.fillStyle = 'green';
 snake.cells.forEach(function (cell, index) {
   context.fillRect(cell.x, cell.y, grid - 1, grid - 1);
+
+  //   When Snake cell collides Apple
+  if (cell.x == apple.x && cell.y == apple.y) {
+    snake.maxCells++;
+
+    // apple moves another random location
+    apple.x = getRandomInt(0, canvas.width / 16) * grid;
+    apple.y = getRandomInt(0, canvas.height / 16) * grid;
+  }
 });
