@@ -28,8 +28,13 @@
       height="400"
       style="border: 1px solid black"
     ></canvas>
-    <!-- <main></main> -->
     <script>
+      const canvas = document.getElementById('game');
+      const context = canvas.getContext('2d');
+
+      const grid = 16;
+      let userSpeed = 6;
+      let count = 0;
       let snake = {
         x: 100,
         y: 100,
@@ -39,20 +44,13 @@
         cells: [],
         maxCells: 1,
       };
-      let apple = { x: 50, y: 50 };
-      const grid = 16;
-      let canvas;
-      let userSpeed = 6;
-      let count = 0;
-
-      const game = document.getElementById('game');
-      let context = game.getContext('2d');
+      let apple = { x: 100, y: 100 };
 
       const getRandomInt = (min, max) => {
         return Math.floor(Math.random() * (max - min)) + min;
       };
 
-      const loop = () => {
+      function loop() {
         // make smooth animation with looping
         requestAnimationFrame(loop);
 
@@ -60,12 +58,12 @@
         if (++count < userSpeed) {
           return;
         }
-        count === 0;
+        count = 0;
 
         // to clear the entire canvas
         context.clearRect(0, 0, canvas.width, canvas.height);
 
-        // snake movement
+        // snake movement + velocity
         snake.x += snake.dx;
         snake.y += snake.dy;
 
@@ -87,23 +85,23 @@
         const snakeBodyMovement = () => {
           snake.cells.unshift({ x: snake.x, y: snake.y });
 
+          // remove cells as we move away from them
           if (snake.cells.length > snake.maxCells) {
             snake.cells.pop();
           }
         };
-        snakeBodyMovement();
 
         // drawing an apple
         context.fillStyle = 'red';
-        context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+        context.fillRect(apple.x, apple.y, grid, grid);
 
         // Draw the snake on the canvas
         context.fillStyle = 'green';
         snake.cells.forEach(function (cell, index) {
-          context.fillRect(cell.x, cell.y, grid - 1, grid - 1);
+          context.fillRect(cell.x, cell.y, grid, grid);
 
           //   When Snake cell collides Apple
-          if (cell.x == apple.x && cell.y == apple.y) {
+          if (cell.x === apple.x && cell.y === apple.y) {
             snake.maxCells++;
 
             // apple moves another random location
@@ -114,7 +112,7 @@
           // modified bubble sort
           for (let i = index + 1; i < snake.cells.length; i++) {
             // if one piece of the snakes body is occupying the same space as another piece of the snakes body, reset the game
-            if (cell.x == snake.cells[i].x && cell.y == snake.cells[i].y) {
+            if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
               snake.x = 100;
               snake.y = 100;
               snake.dx = grid;
@@ -127,7 +125,9 @@
             }
           }
         });
-      };
+
+        snakeBodyMovement();
+      }
 
       document.addEventListener('keydown', function (e) {
         if (e.which === 37 && snake.dx === 0) {

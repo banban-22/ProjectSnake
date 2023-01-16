@@ -1,3 +1,13 @@
+let canvas = document.getElementById('game');
+let context = game.getContext('2d');
+
+// - an immutable variable for the canvas grid, called "grid"
+const grid = 16;
+
+// - mutable variables for snake speed and the count of speed, called "userSpeed" & "count". give count a default value of 0, and userSpeed a default value of 6.
+let userSpeed = 6;
+let count = 0;
+
 // - mutable object variables for both the snake & the apple, called "snake" & "apple"
 let snake = {
   x: 100,
@@ -14,19 +24,6 @@ let snake = {
 };
 let apple = { x: 50, y: 50 };
 
-// - an immutable variable for the canvas grid, called "grid"
-const grid = 16;
-
-// - a mutable variable for the canvas, called "canvas"
-let canvas;
-
-// - mutable variables for snake speed and the count of speed, called "userSpeed" & "count". give count a default value of 0, and userSpeed a default value of 6.
-let userSpeed = 6;
-let count = 0;
-
-const game = document.getElementById('game');
-let context = game.getContext('2d');
-
 const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min)) + min;
 };
@@ -39,7 +36,7 @@ const loop = () => {
   if (++count < userSpeed) {
     return;
   }
-  count === 0;
+  count = 0;
 
   // to clear the entire canvas
   context.clearRect(0, 0, canvas.width, canvas.height);
@@ -75,12 +72,12 @@ const loop = () => {
 
   // drawing an apple
   context.fillStyle = 'red';
-  context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+  context.fillRect(apple.x, apple.y, grid, grid);
 
   // Draw the snake on the canvas
   context.fillStyle = 'green';
   snake.cells.forEach(function (cell, index) {
-    context.fillRect(cell.x, cell.y, grid - 1, grid - 1);
+    context.fillRect(cell.x, cell.y, grid, grid);
 
     //   When Snake cell collides Apple
     if (cell.x == apple.x && cell.y == apple.y) {
