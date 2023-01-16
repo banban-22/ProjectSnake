@@ -1,7 +1,3 @@
-/* inside the snake.css file, add the following elements:
-- 100% height and 0 margin for the body & HTML
-- center the body (but not the HTML) element both vertically and horizontally using flex */
-
 html,
 body {
   height: 100%;

@@ -108,3 +108,26 @@ const loop = () => {
     }
   });
 };
+
+document.addEventListener('keydown', function (e) {
+  if (e.which === 37 && snake.dx === 0) {
+    // arrow left
+    snake.dx = -grid;
+    snake.dy = 0;
+  } else if (e.which === 39 && snake.dx === 0) {
+    // arrow right
+    snake.dx = grid;
+    snake.dy = 0;
+  } else if (e.which === 38 && snake.dy === 0) {
+    // arrow up
+    snake.dy = -grid;
+    snake.dx = 0;
+  } else if (e.which === 40 && snake.dy === 0) {
+    // arrow down
+    snake.dy = grid;
+    snake.dx = 0;
+  }
+});
+
+// starting the game
+requestAnimationFrame(loop);
