@@ -25,7 +25,6 @@ let userSpeed = 6;
 let count = 0;
 
 const game = document.getElementById('game');
-// - a mutable variable for the canvas movement, called "context"
 let context = game.getContext('2d');
 
 const getRandomInt = (min, max) => {
@@ -33,8 +32,10 @@ const getRandomInt = (min, max) => {
 };
 
 const loop = () => {
+  // make smooth animation with looping
   requestAnimationFrame(loop);
 
+  //   frame rate based on the userSpeed
   if (++count < userSpeed) {
     return;
   }
@@ -47,6 +48,21 @@ const loop = () => {
 // snake movement
 snake.x += snake.dx;
 snake.y += snake.dy;
+
+// situation where the snake collides with the horizontal axises
+if (snake.x < 0) {
+  snake.x = canvas.width - grid;
+} else if (snake.x >= canvas.width) {
+  snake.x = 0;
+}
+
+// situation where the snake collides with the vertical axises
+
+if (snake.y < 0) {
+  snake.y = canvas.height - grid;
+} else if (snake.y >= canvas.height) {
+  snake.y = 0;
+}
 
 // drawing an apple
 context.fillStyle = 'red';
