@@ -20,3 +20,21 @@ let cells = [];
 
 // - a default value for initial snake length, called "maxCells", with an initial value of 1
 let maxCells = 1;
+
+const game = document.getElementById('get');
+let ctx = canvas.getContext('2d');
+
+const getRandomInt = (min, max) => {
+  let randomMin = Math.random * parseInt(min);
+  let randomMax = Math.random * parseInt(max);
+};
+
+const loop = () => {
+  if (++count < userSpeed) {
+    return;
+  } else {
+    count === 0;
+  }
+
+  requestAnimationFrame(loop);
+};
