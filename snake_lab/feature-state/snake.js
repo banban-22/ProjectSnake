@@ -21,6 +21,20 @@ let apple = {
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
+const speed = document.getElementById('speed');
+
+const changeSpeed = () => {
+  const speedValue = speed.value;
+  if (speedValue === 'fast') {
+    userSpeed = 1;
+  } else if (speedValue === 'medium') {
+    userSpeed = 3;
+  } else if (speedValue === 'slow') {
+    userSpeed = 5;
+  } else if (speedValue === 'turtle') {
+    userSpeed = 9;
+  }
+};
 
 function loop() {
   requestAnimationFrame(loop);
