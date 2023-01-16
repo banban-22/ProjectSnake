@@ -49,4 +49,6 @@ context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
 
 // Draw the snake on the canvas
 context.fillStyle = 'green';
-snake.cells.forEach(cell, index){}
+snake.cells.forEach(function (cell, index) {
+  context.fillRect(cell.x, cell.y, grid - 1, grid - 1);
+});
