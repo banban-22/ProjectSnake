@@ -6,10 +6,13 @@ const snakeColor = document.getElementById('snakeColor');
 const appleColor = document.getElementById('appleColor');
 const bgColor = document.getElementById('bgColor');
 const color = document.getElementById('color');
+const userScore = document.querySelector('.userScore');
+// const myScore = document.getElementById('score');
 
 const grid = 16;
 let count = 0;
 let userSpeed = 6;
+let score = 0;
 
 let snake = {
   x: 160,
@@ -72,6 +75,9 @@ function loop() {
 
     if (cell.x === apple.x && cell.y === apple.y) {
       snake.maxCells++;
+      score += 1;
+      let scoreDisplay = `Score: ${score}`;
+      userScore.innerHTML = scoreDisplay;
 
       apple.x = getRandomInt(0, canvas.width / 16) * grid;
       apple.y = getRandomInt(0, canvas.height / 16) * grid;
@@ -224,6 +230,18 @@ function appleColorChange() {
   }
 }
 
-const bgColorChange = () => {};
+function bgColorChange() {
+  color.addEventListener('click', (e) => {
+    // e.preventDefault();
+    let inputColor = bgColor.value;
+    console.log(inputColor);
+
+    context.fillStyle = inputColor;
+    context.fillRect(0, 0, canvas.width, canvas.height);
+  });
+}
 
 requestAnimationFrame(loop);
+
+// context.fillStyle = bgColorChange();
+// context.fillRect(0, 0, canvas.width, canvas.height);
