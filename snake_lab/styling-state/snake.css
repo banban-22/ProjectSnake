@@ -40,11 +40,44 @@ body {
 #size,
 #snakeColor,
 #appleColor {
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 1rem;
   cursor: pointer;
   border-radius: 0.5rem;
-  background: green;
+  background: #bcdfce;
   border: none;
   color: #fff;
   margin-left: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-family: 'Teko', sans-serif;
+  font-size: 1.1rem;
+  /* text-align: center; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+option {
+  font-family: 'Teko', sans-serif;
+}
+
+#bgColor {
+  font-family: 'Teko', sans-serif;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+#color {
+  font-family: 'Teko', sans-serif;
+  font-size: 1.1rem;
+  color: #fff;
+  margin-left: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 1rem;
+  border: none;
+  background: #bcdfce;
+  box-shadow: 5px 5px 5px #c0c0c1;
+  cursor: pointer;
+}
+
+#color:active {
+  transform: translateY(3px);
 }
