@@ -1,5 +1,11 @@
 let canvas = document.getElementById('game');
 let context = canvas.getContext('2d');
+const speed = document.getElementById('speed');
+const size = document.getElementById('size');
+const snakeColor = document.getElementById('snakeColor');
+const appleColor = document.getElementById('appleColor');
+const bgColor = document.getElementById('bgColor');
+const color = document.getElementById('color');
 
 const grid = 16;
 let count = 0;
@@ -56,11 +62,12 @@ function loop() {
   };
   snakeBodyMovement();
 
-  context.fillStyle = 'red';
+  context.fillStyle = appleColorChange();
   context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
 
   context.fillStyle = 'green';
   snake.cells.forEach(function (cell, index) {
+    snakeColorChange();
     context.fillRect(cell.x, cell.y, grid - 1, grid - 1);
 
     if (cell.x === apple.x && cell.y === apple.y) {
@@ -102,7 +109,6 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
-const speed = document.getElementById('speed');
 const changeSpeed = () => {
   const speedValue = speed.value;
   if (speedValue === 'fast') {
@@ -116,7 +122,6 @@ const changeSpeed = () => {
   }
 };
 
-const size = document.getElementById('size');
 const changeSize = () => {
   const sizeValue = size.value;
   if (sizeValue === 'bigBoard') {
@@ -134,7 +139,6 @@ const changeSize = () => {
   }
 };
 
-const snakeColor = document.getElementById('snakeColor');
 function snakeColorChange() {
   let snakeColorValue = snakeColor.value;
 
@@ -168,39 +172,58 @@ function snakeColorChange() {
   }
 }
 
-const appleColor = document.getElementById('appleColor');
 function appleColorChange() {
   let appleColorValue = appleColor.value;
-  console.log(appleColor);
 
-  if (appleColorValue === 'yellow') {
-    context.fillStyle = '#ffff00';
-    context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
-  } else if (appleColorValue === 'orange') {
-    context.fillStyle = '#ffa500';
-    context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
-  } else if (appleColorValue === 'redOrange') {
-    context.fillStyle = '#ff5349';
-    context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
-  } else if (appleColorValue === 'red') {
-    context.fillStyle = '#ff0000';
-    context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
-  } else if (appleColorValue === 'redViolet') {
-    context.fillStyle = '#c71585';
-    context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
-  } else if (appleColorValue === 'violet') {
-    context.fillStyle = '#ee82ee';
-    context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
-  } else if (appleColorValue === 'blueViolet') {
-    context.fillStyle = '#8a2be2';
-    context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
-  } else if (appleColorValue === 'blue') {
-    context.fillStyle = '#0000ff';
-    context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
-  } else if (appleColorValue === 'blueGreen') {
-    context.fillStyle = '#0d98ba';
-    context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+  switch (appleColorValue) {
+    case 'appleColor':
+      context.fillStyle = '#ff0000';
+      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      break;
+
+    case 'yellow':
+      context.fillStyle = '#ffff00';
+      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      break;
+    case 'orange':
+      context.fillStyle = '#ffa500';
+      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      break;
+    case 'redOrange':
+      context.fillStyle = '#ff5349';
+      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      break;
+    case 'black':
+      context.fillStyle = '#000';
+      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      break;
+    case 'redViolet':
+      context.fillStyle = '#c71585';
+      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      break;
+    case 'violet':
+      context.fillStyle = '#ee82ee';
+      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      break;
+    case 'blueViolet':
+      context.fillStyle = '#8a2be2';
+      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      break;
+    case 'blue':
+      context.fillStyle = '#0000ff';
+      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      break;
+    case 'blueGreen':
+      context.fillStyle = '#0d98ba';
+      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      break;
+    default:
+      context.fillStyle = '#ff0000';
+      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      break;
   }
 }
+
+const bgColorChange = () => {};
 
 requestAnimationFrame(loop);
