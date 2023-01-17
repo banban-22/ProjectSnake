@@ -102,8 +102,6 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
-requestAnimationFrame(loop);
-
 const speed = document.getElementById('speed');
 const changeSpeed = () => {
   const speedValue = speed.value;
@@ -135,3 +133,114 @@ const changeSize = () => {
     canvas.height = 200;
   }
 };
+
+requestAnimationFrame(loop);
+
+/* 
+const snakeColor = document.getElementById('snakeColor');
+function snakeColorChange() {
+  let snakeColorValue = snakeColor.value;
+
+  if (snakeColorValue === 'yellow') {
+    context.fillStyle = '#ffff00';
+    context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
+  } else if (snakeColorValue === 'orange') {
+    context.fillStyle = '#ffa500';
+    context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
+  } else if (snakeColorValue === 'redOrange') {
+    context.fillStyle = '#ff5349';
+    context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
+  } else if (snakeColorValue === 'red') {
+    context.fillStyle = '#ff0000';
+    context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
+  } else if (snakeColorValue === 'redViolet') {
+    context.fillStyle = '#c71585';
+    context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
+  } else if (snakeColorValue === 'violet') {
+    context.fillStyle = '#ee82ee';
+    context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
+  } else if (snakeColorValue === 'blueViolet') {
+    context.fillStyle = '#8a2be2';
+    context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
+  } else if (snakeColorValue === 'blue') {
+    context.fillStyle = '#0000ff';
+    context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
+  } else if (snakeColorValue === 'blueGreen') {
+    context.fillStyle = '#0d98ba';
+    context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
+  }
+}
+
+const appleColor = document.getElementById('appleColor');
+function appleColorChange() {
+  let appleColorValue = appleColor.value;
+  console.log(appleColor);
+
+  if (appleColorValue === 'yellow') {
+    context.fillStyle = '#ffff00';
+    context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+  } else if (appleColorValue === 'orange') {
+    context.fillStyle = '#ffa500';
+    context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+  } else if (appleColorValue === 'redOrange') {
+    context.fillStyle = '#ff5349';
+    context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+  } else if (appleColorValue === 'red') {
+    context.fillStyle = '#ff0000';
+    context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+  } else if (appleColorValue === 'redViolet') {
+    context.fillStyle = '#c71585';
+    context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+  } else if (appleColorValue === 'violet') {
+    context.fillStyle = '#ee82ee';
+    context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+  } else if (appleColorValue === 'blueViolet') {
+    context.fillStyle = '#8a2be2';
+    context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+  } else if (appleColorValue === 'blue') {
+    context.fillStyle = '#0000ff';
+    context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+  } else if (appleColorValue === 'blueGreen') {
+    context.fillStyle = '#0d98ba';
+    context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+  }
+} */
+
+//   switch (snakeColorValue) {
+//     case 'yellow':
+//       context.fillStyle = '#ffff00';
+//       break;
+
+//     case 'orange':
+//       context.fillStyle = '#ffa500';
+//       break;
+
+//     case 'redOrange':
+//       context.fillStyle = '#ff5349';
+//       break;
+
+//     case 'red':
+//       context.fillStyle = '#ff0000';
+//       break;
+
+//     case 'redViolet':
+//       context.fillStyle = '#c71585';
+//       break;
+
+//     case 'violet':
+//       context.fillStyle = '#ee82ee';
+//       break;
+
+//     case 'blueViolet':
+//       context.fillStyle = '#8a2be2';
+//       break;
+
+//     case 'blue':
+//       context.fillStyle = '#0000ff';
+//       break;
+
+//     case 'blueGreen':
+//       context.fillStyle = '#0d98ba';
+//       break;
+//   }
+// };

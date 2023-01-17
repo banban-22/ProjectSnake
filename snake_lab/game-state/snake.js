@@ -6,17 +6,17 @@ let count = 0;
 let userSpeed = 6;
 
 let snake = {
-  x: 160,
-  y: 160,
+  x: 100,
+  y: 100,
   dx: grid,
   dy: 0,
   // keep track of all grids the snake body occupies
   cells: [],
-  maxCells: 4,
+  maxCells: 1,
 };
 let apple = {
-  x: 160,
-  y: 160,
+  x: 100,
+  y: 100,
 };
 
 function getRandomInt(min, max) {
@@ -84,8 +84,8 @@ function loop() {
       snake.maxCells++;
 
       // apple moves another random location
-      apple.x = getRandomInt(0, 25) * grid;
-      apple.y = getRandomInt(0, 25) * grid;
+      apple.x = getRandomInt(0, canvas.width / 16) * grid;
+      apple.y = getRandomInt(0, canvas.height / 16) * grid;
     }
 
     // modified bubble sort

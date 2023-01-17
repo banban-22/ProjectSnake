@@ -25,30 +25,36 @@
         <option value="smallBoard">Small board</option>
         <option value="tinyBoard">Tiny Board</option>
       </select>
-      <select id="list3">
-        <option value="select1">Select #3</option>
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
-        <option value="option4">Option 4</option>
-        <option value="option5">Option 5</option>
-        <option value="option6">Option 6</option>
-        <option value="option7">Option 7</option>
-        <option value="option8">Option 8</option>
-        <option value="option9">Option 9</option>
+      <select id="snakeColor" onChange="snakeColorChange()">
+        <option value="select3">Snake Color</option>
+        <option value="yellow">yellow</option>
+        <option value="orange">orange</option>
+        <option value="redOrange">red orange</option>
+        <option value="red">red</option>
+        <option value="redViolet">red violet</option>
+        <option value="violet">violet</option>
+        <option value="blueViolet">blueViolet</option>
+        <option value="blue">blue</option>
+        <option value="blueGreen">blueGreen</option>
       </select>
-      <select id="list4">
-        <option value="select1">Select #4</option>
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
-        <option value="option4">Option 4</option>
-        <option value="option5">Option 5</option>
-        <option value="option6">Option 6</option>
-        <option value="option7">Option 7</option>
-        <option value="option8">Option 8</option>
-        <option value="option9">Option 9</option>
+      <select id="appleColor" onChange="appleColorChange()">
+        <option value="select4">Apple Color</option>
+        <option value="yellow">yellow</option>
+        <option value="orange">orange</option>
+        <option value="redOrange">red orange</option>
+        <option value="red">red</option>
+        <option value="redViolet">red violet</option>
+        <option value="violet">violet</option>
+        <option value="blueViolet">blue violet</option>
+        <option value="blue">blue</option>
+        <option value="blueGreen">blue green</option>
       </select>
+    </div>
+
+    <div>
+        <input type="text" id="bgColor" placeholder="Background Color" />
+        <input type="button" id="color" value="Change Color">
+      </form>
     </div>
 
     <canvas
