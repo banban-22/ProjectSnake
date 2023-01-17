@@ -8,8 +8,9 @@
     <title>Snake Lab: Styling State</title>
   </head>
   <body>
-    <h1>Snake Lab: Styling State</h1>
+    <h1 class="title">Snake Lab: Styling State</h1>
 <main>
+  <div class="options" >
       <select id="speed" onChange="changeSpeed()">
         <option value="select1">Speed</option>
         <option value="fast">fast</option>
@@ -36,7 +37,7 @@
         <option value="blue">blue</option>
         <option value="blueGreen">blueGreen</option>
       </select>
-      <select id="appleColor">
+      <select id="appleColor" >
         <option value="appleColor">Apple Color</option>
         <option value="yellow">yellow</option>
         <option value="orange">orange</option>
@@ -50,18 +51,20 @@
       </select>
     </div>
 
-    <div>
+    <div class="bgColor-options">
         <input type="text" id="bgColor" placeholder="Background Color" />
         <input type="submit" id="color" value="Change Color" onClick="bgColorChange()">
       </form>
     </div>
 
+    <div class="canvas-container">
     <canvas
       id="game"
       width="400"
       height="400"
       style="border: 1px solid black"
     ></canvas>
+    </div>
     
     <div>
       <p class="userScore">Score: 0</p>
