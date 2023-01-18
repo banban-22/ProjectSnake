@@ -6,8 +6,8 @@ let count = 0;
 let userSpeed = 6;
 
 let snake = {
-  x: 100,
-  y: 100,
+  x: 160,
+  y: 160,
   dx: grid,
   dy: 0,
   // keep track of all grids the snake body occupies
@@ -15,8 +15,8 @@ let snake = {
   maxCells: 1,
 };
 let apple = {
-  x: 100,
-  y: 100,
+  x: 160,
+  y: 160,
 };
 
 function getRandomInt(min, max) {
@@ -54,11 +54,6 @@ function loop() {
     snake.y = 0;
   }
 
-  /* snake.cells.unshift({ x: snake.x, y: snake.y });
-
-        if (snake.cells.length > snake.maxCells) {
-          snake.cells.pop();
-        } */
   // snake body movement
   const snakeBodyMovement = () => {
     snake.cells.unshift({ x: snake.x, y: snake.y });
