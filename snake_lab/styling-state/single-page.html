@@ -127,25 +127,23 @@
           <option value="snakeColor" class="optionClass">Snake Color</option>
           <option value="yellow" class="yellowBg">yellow</option>
           <option value="orange" class="orangeBg">orange</option>
-          <option value="redOrange" class="redOrangeBg">red orange</option>
-          <option value="red" class="red">red</option>
           <option value="redViolet" class="redVioletBg">red violet</option>
           <option value="violet" class="violetBg">violet</option>
           <option value="blueViolet" class="blueVioletBg">blueViolet</option>
           <option value="blue" class="blueBg">blue</option>
           <option value="blueGreen" class="blueGreenBg">blueGreen</option>
+          <option value="cyan" class="cyanBg">cyan</option>
         </select>
         <select id="appleColor">
           <option value="appleColor">Apple Color</option>
           <option value="yellow" class="yellowBg">yellow</option>
           <option value="orange" class="orangeBg">orange</option>
-          <option value="redOrange" class="redOrangeBg">red orange</option>
-          <option value="smokeWhite" class="smokeWhiteBg">smoke white</option>
           <option value="redViolet" class="redVioletBg">red violet</option>
           <option value="violet" class="violetBg">violet</option>
           <option value="blueViolet" class="blueVioletBg">blue violet</option>
           <option value="blue" class="blueBg">blue</option>
           <option value="blueGreen" class="blueGreenBg">blue green</option>
+          <option value="cyan" class="cyanBg">cyan</option>
         </select>
       </div>
 
@@ -310,17 +308,17 @@
       const changeSize = () => {
         const sizeValue = size.value;
         if (sizeValue === 'bigBoard') {
-          canvas.width = 650;
-          canvas.height = 650;
+          canvas.width = 640;
+          canvas.height = 640;
         } else if (sizeValue === 'mediumBoard') {
-          canvas.width = 500;
-          canvas.height = 500;
+          canvas.width = 480;
+          canvas.height = 480;
         } else if (sizeValue === 'smallBoard') {
-          canvas.width = 350;
-          canvas.height = 350;
+          canvas.width = 320;
+          canvas.height = 320;
         } else if (sizeValue === 'tinyBoard') {
-          canvas.width = 200;
-          canvas.height = 200;
+          canvas.width = 240;
+          canvas.height = 240;
         }
       };
 
@@ -334,12 +332,6 @@
         } else if (snakeColorValue === 'orange') {
           context.fillStyle = '#ffa500';
           snakeColor.style.backgroundColor = '#ffa500';
-        } else if (snakeColorValue === 'redOrange') {
-          context.fillStyle = '#ff5349';
-          snakeColor.style.backgroundColor = '#ff5349';
-        } else if (snakeColorValue === 'red') {
-          context.fillStyle = '#ff0000';
-          snakeColor.style.backgroundColor = '#ff0000';
         } else if (snakeColorValue === 'redViolet') {
           context.fillStyle = '#c71585';
           snakeColor.style.backgroundColor = '#c71585';
@@ -355,6 +347,9 @@
         } else if (snakeColorValue === 'blueGreen') {
           context.fillStyle = '#0d98ba';
           snakeColor.style.backgroundColor = '#0d98ba';
+        } else if (snakeColorValue === 'cyan') {
+          context.fillStyle = '#00FFFF';
+          snakeColor.style.backgroundColor = '#00FFFF';
         } else {
           context.fillStyle = '#00ff00';
         }
@@ -376,15 +371,6 @@
             context.fillStyle = '#ffa500';
             appleColor.style.backgroundColor = '#ffa500';
             break;
-          case 'redOrange':
-            context.fillStyle = '#ff5349';
-            appleColor.style.backgroundColor = '#ff5349';
-            break;
-          case 'smokeWhite':
-            context.fillStyle = '#f5f5f5';
-            appleColor.style.backgroundColor = '#f5f5f5';
-            appleColor.style.color = '#000';
-            break;
           case 'redViolet':
             context.fillStyle = '#c71585';
             appleColor.style.backgroundColor = '#c71585';
@@ -404,6 +390,10 @@
           case 'blueGreen':
             context.fillStyle = '#0d98ba';
             appleColor.style.backgroundColor = '#0d98ba';
+            break;
+          case 'cyan':
+            context.fillStyle = '#00FFFF';
+            appleColor.style.backgroundColor = '#00FFFF';
             break;
           default:
             context.fillStyle = '#ff0000';

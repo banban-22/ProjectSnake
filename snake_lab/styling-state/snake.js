@@ -133,17 +133,17 @@ const changeSpeed = () => {
 const changeSize = () => {
   const sizeValue = size.value;
   if (sizeValue === 'bigBoard') {
-    canvas.width = 650;
-    canvas.height = 650;
+    canvas.width = 640;
+    canvas.height = 640;
   } else if (sizeValue === 'mediumBoard') {
-    canvas.width = 500;
-    canvas.height = 500;
+    canvas.width = 480;
+    canvas.height = 480;
   } else if (sizeValue === 'smallBoard') {
-    canvas.width = 350;
-    canvas.height = 350;
+    canvas.width = 320;
+    canvas.height = 320;
   } else if (sizeValue === 'tinyBoard') {
-    canvas.width = 200;
-    canvas.height = 200;
+    canvas.width = 240;
+    canvas.height = 240;
   }
 };
 
@@ -157,10 +157,7 @@ function snakeColorChange() {
   } else if (snakeColorValue === 'orange') {
     context.fillStyle = '#ffa500';
     snakeColor.style.backgroundColor = '#ffa500';
-  } else if (snakeColorValue === 'redOrange') {
-    context.fillStyle = '#ff5349';
-    snakeColor.style.backgroundColor = '#ff5349';
-  } else if (snakeColorValue === 'red') {
+  }  else if (snakeColorValue === 'red') {
     context.fillStyle = '#ff0000';
     snakeColor.style.backgroundColor = '#ff0000';
   } else if (snakeColorValue === 'redViolet') {
@@ -199,11 +196,7 @@ function appleColorChange() {
       context.fillStyle = '#ffa500';
       appleColor.style.backgroundColor = '#ffa500';
       break;
-    case 'redOrange':
-      context.fillStyle = '#ff5349';
-      appleColor.style.backgroundColor = '#ff5349';
-      break;
-    case 'smokeWhite':
+          case 'smokeWhite':
       context.fillStyle = '#f5f5f5';
       appleColor.style.backgroundColor = '#f5f5f5';
       appleColor.style.color = '#000';

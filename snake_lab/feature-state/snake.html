@@ -28,32 +28,36 @@
         <option value="snakeColor">Snake Color</option>
         <option value="yellow">yellow</option>
         <option value="orange">orange</option>
-        <option value="redOrange">red orange</option>
-        <option value="red">red</option>
         <option value="redViolet">red violet</option>
         <option value="violet">violet</option>
         <option value="blueViolet">blueViolet</option>
         <option value="blue">blue</option>
         <option value="blueGreen">blueGreen</option>
+        <option value="cyan">cyan</option>
       </select>
       <select id="appleColor">
         <option value="appleColor">Apple Color</option>
         <option value="yellow">yellow</option>
         <option value="orange">orange</option>
-        <option value="redOrange">red orange</option>
-        <option value="black">black</option>
         <option value="redViolet">red violet</option>
         <option value="violet">violet</option>
         <option value="blueViolet">blue violet</option>
         <option value="blue">blue</option>
         <option value="blueGreen">blue green</option>
+        <option value="cyan">cyan</option>
       </select>
     </div>
 
     <div>
-        <input type="text" id="bgColor" placeholder="Background Color" />
-        <input type="submit" id="color" value="Change Color" onClick="bgColorChange()">
-      </form>
+        <form>
+          <input type="text" id="bgColor" placeholder="Background Color" />
+          <input
+            type="button"
+            id="color"
+            value="Change Color"
+            onclick="bgColorChange()"
+          />
+        </form>
     </div>
 
     <canvas

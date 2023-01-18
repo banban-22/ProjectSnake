@@ -12,6 +12,7 @@ const grid = 16;
 let count = 0;
 let userSpeed = 6;
 let score = 0;
+let bgColorInit = 'white';
 
 let snake = {
   x: 160,
@@ -40,8 +41,8 @@ function loop() {
 
   context.clearRect(0, 0, canvas.width, canvas.height);
 
-  // context.fillStyle = bgColorChange();
-  // context.fillRect(0, 0, canvas.width, canvas.height);
+  context.fillStyle = bgColorChange();
+  context.fillRect(0, 0, canvas.width, canvas.height);
 
   snake.x += snake.dx;
   snake.y += snake.dy;
@@ -70,9 +71,8 @@ function loop() {
   context.fillStyle = appleColorChange();
   context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
 
-  context.fillStyle = 'green';
+  context.fillStyle = snakeColorChange();
   snake.cells.forEach(function (cell, index) {
-    snakeColorChange();
     context.fillRect(cell.x, cell.y, grid - 1, grid - 1);
 
     if (cell.x === apple.x && cell.y === apple.y) {
@@ -102,16 +102,25 @@ function loop() {
 }
 
 document.addEventListener('keydown', function (e) {
-  if (e.which === 37 && snake.dx === 0) {
+  if ((e.which === 37 && snake.dx === 0) || (e.key == 'a' && snake.dx === 0)) {
     snake.dx = -grid;
     snake.dy = 0;
-  } else if (e.which === 38 && snake.dy === 0) {
-    snake.dy = -grid;
-    snake.dx = 0;
-  } else if (e.which === 39 && snake.dx === 0) {
+  } else if (
+    (e.which === 39 && snake.dx === 0) ||
+    (e.key == 'w' && snake.dx === 0)
+  ) {
     snake.dx = grid;
     snake.dy = 0;
-  } else if (e.which === 40 && snake.dy === 0) {
+  } else if (
+    (e.which === 38 && snake.dy === 0) ||
+    (e.key == 'd' && snake.dy === 0)
+  ) {
+    snake.dy = -grid;
+    snake.dx = 0;
+  } else if (
+    (e.which === 40 && snake.dy === 0) ||
+    (e.key == 's' && snake.dy === 0)
+  ) {
     snake.dy = grid;
     snake.dx = 0;
   }
@@ -133,17 +142,17 @@ const changeSpeed = () => {
 const changeSize = () => {
   const sizeValue = size.value;
   if (sizeValue === 'bigBoard') {
-    canvas.width = 650;
-    canvas.height = 650;
+    canvas.width = 640;
+    canvas.height = 640;
   } else if (sizeValue === 'mediumBoard') {
-    canvas.width = 500;
-    canvas.height = 500;
+    canvas.width = 480;
+    canvas.height = 480;
   } else if (sizeValue === 'smallBoard') {
-    canvas.width = 350;
-    canvas.height = 350;
+    canvas.width = 320;
+    canvas.height = 320;
   } else if (sizeValue === 'tinyBoard') {
-    canvas.width = 200;
-    canvas.height = 200;
+    canvas.width = 240;
+    canvas.height = 240;
   }
 };
 
@@ -152,31 +161,22 @@ function snakeColorChange() {
 
   if (snakeColorValue === 'yellow') {
     context.fillStyle = '#ffff00';
-    context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
   } else if (snakeColorValue === 'orange') {
     context.fillStyle = '#ffa500';
-    context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
-  } else if (snakeColorValue === 'redOrange') {
-    context.fillStyle = '#ff5349';
-    context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
-  } else if (snakeColorValue === 'red') {
-    context.fillStyle = '#ff0000';
-    context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
   } else if (snakeColorValue === 'redViolet') {
     context.fillStyle = '#c71585';
-    context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
   } else if (snakeColorValue === 'violet') {
     context.fillStyle = '#ee82ee';
-    context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
   } else if (snakeColorValue === 'blueViolet') {
     context.fillStyle = '#8a2be2';
-    context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
   } else if (snakeColorValue === 'blue') {
     context.fillStyle = '#0000ff';
-    context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
   } else if (snakeColorValue === 'blueGreen') {
     context.fillStyle = '#0d98ba';
-    context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
+  } else if (snakeColorValue === 'cyan') {
+    context.fillStyle = '#00FFFF';
+  } else {
+    context.fillStyle = '#00ff00';
   }
 }
 
@@ -186,64 +186,49 @@ function appleColorChange() {
   switch (appleColorValue) {
     case 'appleColor':
       context.fillStyle = '#ff0000';
-      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
       break;
-
     case 'yellow':
       context.fillStyle = '#ffff00';
-      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
       break;
     case 'orange':
       context.fillStyle = '#ffa500';
-      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
-      break;
-    case 'redOrange':
-      context.fillStyle = '#ff5349';
-      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
-      break;
-    case 'black':
-      context.fillStyle = '#000';
-      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
       break;
     case 'redViolet':
       context.fillStyle = '#c71585';
-      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
       break;
     case 'violet':
       context.fillStyle = '#ee82ee';
-      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
       break;
     case 'blueViolet':
       context.fillStyle = '#8a2be2';
-      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
       break;
     case 'blue':
       context.fillStyle = '#0000ff';
-      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
       break;
     case 'blueGreen':
       context.fillStyle = '#0d98ba';
-      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      break;
+    case 'cyan':
+      context.fillStyle = '#00FFFF';
       break;
     default:
       context.fillStyle = '#ff0000';
-      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
       break;
   }
 }
 
-// color.addEventListener('click', () => {
-//   bgColorInit = bgColor.value;
-// });
+color.addEventListener('click', () => {
+  bgColorInit = bgColor.value;
+});
 
-// function bgColorChange() {
-//   let inputColor = bgColorInit;
+function bgColorChange() {
+  let inputColor = bgColorInit;
 
-//   if (inputColor === '') {
-//     context.fillStyle = 'black';
-//   } else {
-//     context.fillStyle = inputColor;
-//   }
-// }
+  if (inputColor === '') {
+    context.fillStyle = 'black';
+  } else {
+    context.fillStyle = inputColor;
+  }
+}
 
 requestAnimationFrame(loop);
