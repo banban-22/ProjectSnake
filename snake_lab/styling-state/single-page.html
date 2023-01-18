@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #000;
+      }
+
+      .title {
+        font-family: 'Teko', sans-serif;
+        margin: 0 auto;
+        text-align: center;
+        color: #fff;
+      }
+
+      .userScore {
+        font-family: 'Teko', sans-serif;
+        margin: 0 auto;
+        text-align: center;
+        color: #fff;
+      }
+
+      .options {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .bgColor-options {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .canvas-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      #speed,
+      #size,
+      #snakeColor,
+      #appleColor {
+        padding: 0.4rem 1rem;
+        cursor: pointer;
+        border-radius: 0.5rem;
+        background: #bcdfce;
+        border: none;
+        color: #fff;
+        margin-left: 0.5rem;
+        margin-bottom: 0.5rem;
+        font-family: 'Teko', sans-serif;
+        font-size: 1.1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      option {
+        font-family: 'Teko', sans-serif;
+      }
+
+      #bgColor {
+        font-family: 'Teko', sans-serif;
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+      }
+      #color {
+        font-family: 'Teko', sans-serif;
+        font-size: 1.1rem;
+        color: #fff;
+        margin-left: 0.5rem;
+        margin-bottom: 0.5rem;
+        border-radius: 1rem;
+        border: none;
+        background: #bcdfce;
+        box-shadow: 3px 3px 2px #c0c0c1;
+        cursor: pointer;
+      }
+
+      #color:active {
+        transform: translateY(3px);
+      }
+    </style>
+    <title>Snake Lab: Styling State</title>
+  </head>
+  <body>
+    <h1 class="title">Snake Lab: Styling State</h1>
+    <main>
+      <div class="options">
+        <select id="speed" onChange="changeSpeed()">
+          <option value="select1" class="optionClass">Speed</option>
+          <option value="fast" class="optionClass">fast</option>
+          <option value="medium" class="optionClass">medium</option>
+          <option value="slow" class="optionClass">slow</option>
+          <option value="turtle" class="optionClass">turtle</option>
+        </select>
+        <select id="size" onChange="changeSize()">
+          <option value="select2" class="optionClass">Size</option>
+          <option value="bigBoard" class="optionClass">Big Board</option>
+          <option value="mediumBoard" class="optionClass">Medium Board</option>
+          <option value="smallBoard" class="optionClass">Small board</option>
+          <option value="tinyBoard" class="optionClass">Tiny Board</option>
+        </select>
+        <select id="snakeColor">
+          <option value="snakeColor" class="optionClass">Snake Color</option>
+          <option value="yellow" class="yellowBg">yellow</option>
+          <option value="orange" class="orangeBg">orange</option>
+          <option value="redOrange" class="redOrangeBg">red orange</option>
+          <option value="red" class="red">red</option>
+          <option value="redViolet" class="redVioletBg">red violet</option>
+          <option value="violet" class="violetBg">violet</option>
+          <option value="blueViolet" class="blueVioletBg">blueViolet</option>
+          <option value="blue" class="blueBg">blue</option>
+          <option value="blueGreen" class="blueGreenBg">blueGreen</option>
+        </select>
+        <select id="appleColor">
+          <option value="appleColor">Apple Color</option>
+          <option value="yellow" class="yellowBg">yellow</option>
+          <option value="orange" class="orangeBg">orange</option>
+          <option value="redOrange" class="redOrangeBg">red orange</option>
+          <option value="smokeWhite" class="smokeWhiteBg">smoke white</option>
+          <option value="redViolet" class="redVioletBg">red violet</option>
+          <option value="violet" class="violetBg">violet</option>
+          <option value="blueViolet" class="blueVioletBg">blue violet</option>
+          <option value="blue" class="blueBg">blue</option>
+          <option value="blueGreen" class="blueGreenBg">blue green</option>
+        </select>
+      </div>
+
+      <div class="bgColor-options">
+        <form>
+          <input type="text" id="bgColor" placeholder="Background Color" />
+          <input
+            type="button"
+            id="color"
+            value="Change Color"
+            onclick="bgColorChange()"
+          />
+        </form>
+      </div>
+
+      <div class="canvas-container">
+        <canvas
+          id="game"
+          width="400"
+          height="400"
+          style="border: 1px solid white"
+        ></canvas>
+      </div>
+
+      <div>
+        <p class="userScore">Score: 0</p>
+      </div>
+    </main>
+    <script>
+      let canvas = document.getElementById('game');
+      let context = canvas.getContext('2d');
+      const speed = document.getElementById('speed');
+      const size = document.getElementById('size');
+      const snakeColor = document.getElementById('snakeColor');
+      const appleColor = document.getElementById('appleColor');
+      const bgColor = document.getElementById('bgColor');
+      const color = document.getElementById('color');
+      const userScore = document.querySelector('.userScore');
+
+      let bgColorInit = 'black';
+      const grid = 16;
+      let count = 0;
+      let userSpeed = 6;
+      let score = 0;
+
+      let snake = {
+        x: 160,
+        y: 160,
+        dx: grid,
+        dy: 0,
+        cells: [],
+        maxCells: 1,
+      };
+      let apple = {
+        x: 160,
+        y: 160,
+      };
+
+      function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+      }
+
+      function loop() {
+        requestAnimationFrame(loop);
+
+        if (++count < userSpeed) {
+          return;
+        }
+        count = 0;
+
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        context.fillStyle = bgColorChange();
+        context.fillRect(0, 0, canvas.width, canvas.height);
+
+        snake.x += snake.dx;
+        snake.y += snake.dy;
+
+        if (snake.x < 0) {
+          snake.x = canvas.width - grid;
+        } else if (snake.x >= canvas.width) {
+          snake.x = 0;
+        }
+
+        if (snake.y < 0) {
+          snake.y = canvas.height - grid;
+        } else if (snake.y >= canvas.height) {
+          snake.y = 0;
+        }
+
+        const snakeBodyMovement = () => {
+          snake.cells.unshift({ x: snake.x, y: snake.y });
+
+          if (snake.cells.length > snake.maxCells) {
+            snake.cells.pop();
+          }
+        };
+        snakeBodyMovement();
+
+        context.fillStyle = appleColorChange();
+        context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+
+        context.fillStyle = snakeColorChange();
+        snake.cells.forEach(function (cell, index) {
+          context.fillRect(cell.x, cell.y, grid - 1, grid - 1);
+
+          if (cell.x === apple.x && cell.y === apple.y) {
+            snake.maxCells++;
+            score += 1;
+            let scoreDisplay = `Score: ${score}`;
+            userScore.innerHTML = scoreDisplay;
+
+            apple.x = getRandomInt(0, canvas.width / 16) * grid;
+            apple.y = getRandomInt(0, canvas.height / 16) * grid;
+          }
+
+          for (var i = index + 1; i < snake.cells.length; i++) {
+            if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
+              snake.x = 160;
+              snake.y = 160;
+              snake.cells = [];
+              snake.maxCells = 4;
+              snake.dx = grid;
+              snake.dy = 0;
+
+              apple.x = getRandomInt(0, canvas.width / 16) * grid;
+              apple.y = getRandomInt(0, canvas.height / 16) * grid;
+            }
+          }
+        });
+      }
+
+      document.addEventListener('keydown', function (e) {
+        if (e.which === 37 && snake.dx === 0) {
+          snake.dx = -grid;
+          snake.dy = 0;
+        } else if (e.which === 38 && snake.dy === 0) {
+          snake.dy = -grid;
+          snake.dx = 0;
+        } else if (e.which === 39 && snake.dx === 0) {
+          snake.dx = grid;
+          snake.dy = 0;
+        } else if (e.which === 40 && snake.dy === 0) {
+          snake.dy = grid;
+          snake.dx = 0;
+        }
+      });
+
+      const changeSpeed = () => {
+        const speedValue = speed.value;
+        if (speedValue === 'fast') {
+          userSpeed = 1;
+        } else if (speedValue === 'medium') {
+          userSpeed = 3;
+        } else if (speedValue === 'slow') {
+          userSpeed = 5;
+        } else if (speedValue === 'turtle') {
+          userSpeed = 9;
+        }
+      };
+
+      const changeSize = () => {
+        const sizeValue = size.value;
+        if (sizeValue === 'bigBoard') {
+          canvas.width = 650;
+          canvas.height = 650;
+        } else if (sizeValue === 'mediumBoard') {
+          canvas.width = 500;
+          canvas.height = 500;
+        } else if (sizeValue === 'smallBoard') {
+          canvas.width = 350;
+          canvas.height = 350;
+        } else if (sizeValue === 'tinyBoard') {
+          canvas.width = 200;
+          canvas.height = 200;
+        }
+      };
+
+      function snakeColorChange() {
+        let snakeColorValue = snakeColor.value;
+
+        if (snakeColorValue === 'yellow') {
+          context.fillStyle = '#ffff00';
+          snakeColor.style.backgroundColor = '#ffff00';
+          snakeColor.style.color = '#000';
+        } else if (snakeColorValue === 'orange') {
+          context.fillStyle = '#ffa500';
+          snakeColor.style.backgroundColor = '#ffa500';
+        } else if (snakeColorValue === 'redOrange') {
+          context.fillStyle = '#ff5349';
+          snakeColor.style.backgroundColor = '#ff5349';
+        } else if (snakeColorValue === 'red') {
+          context.fillStyle = '#ff0000';
+          snakeColor.style.backgroundColor = '#ff0000';
+        } else if (snakeColorValue === 'redViolet') {
+          context.fillStyle = '#c71585';
+          snakeColor.style.backgroundColor = '#c71585';
+        } else if (snakeColorValue === 'violet') {
+          context.fillStyle = '#ee82ee';
+          snakeColor.style.backgroundColor = '#ee82ee';
+        } else if (snakeColorValue === 'blueViolet') {
+          context.fillStyle = '#8a2be2';
+          snakeColor.style.backgroundColor = '#8a2be2';
+        } else if (snakeColorValue === 'blue') {
+          context.fillStyle = '#0000ff';
+          snakeColor.style.backgroundColor = '#0000ff';
+        } else if (snakeColorValue === 'blueGreen') {
+          context.fillStyle = '#0d98ba';
+          snakeColor.style.backgroundColor = '#0d98ba';
+        } else {
+          context.fillStyle = '#00ff00';
+        }
+      }
+
+      function appleColorChange() {
+        let appleColorValue = appleColor.value;
+
+        switch (appleColorValue) {
+          case 'appleColor':
+            context.fillStyle = '#ff0000';
+            break;
+          case 'yellow':
+            context.fillStyle = '#ffff00';
+            appleColor.style.backgroundColor = '#ffff00';
+            appleColor.style.color = '#000';
+            break;
+          case 'orange':
+            context.fillStyle = '#ffa500';
+            appleColor.style.backgroundColor = '#ffa500';
+            break;
+          case 'redOrange':
+            context.fillStyle = '#ff5349';
+            appleColor.style.backgroundColor = '#ff5349';
+            break;
+          case 'smokeWhite':
+            context.fillStyle = '#f5f5f5';
+            appleColor.style.backgroundColor = '#f5f5f5';
+            appleColor.style.color = '#000';
+            break;
+          case 'redViolet':
+            context.fillStyle = '#c71585';
+            appleColor.style.backgroundColor = '#c71585';
+            break;
+          case 'violet':
+            context.fillStyle = '#ee82ee';
+            appleColor.style.backgroundColor = '#ee82ee';
+            break;
+          case 'blueViolet':
+            context.fillStyle = '#8a2be2';
+            appleColor.style.backgroundColor = '#8a2be2';
+            break;
+          case 'blue':
+            context.fillStyle = '#0000ff';
+            appleColor.style.backgroundColor = '#0000ff';
+            break;
+          case 'blueGreen':
+            context.fillStyle = '#0d98ba';
+            appleColor.style.backgroundColor = '#0d98ba';
+            break;
+          default:
+            context.fillStyle = '#ff0000';
+            break;
+        }
+      }
+
+      color.addEventListener('click', () => {
+        bgColorInit = bgColor.value;
+      });
+
+      function bgColorChange() {
+        let inputColor = bgColorInit;
+
+        if (inputColor === '') {
+          context.fillStyle = 'black';
+        } else {
+          context.fillStyle = inputColor;
+        }
+      }
+
+      requestAnimationFrame(loop);
+    </script>
+  </body>
+</html>
