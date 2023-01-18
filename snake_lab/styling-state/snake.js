@@ -40,6 +40,15 @@ function loop() {
 
   context.clearRect(0, 0, canvas.width, canvas.height);
 
+  // context.canvas.fillStyle = context.bgColor.addEventListener(
+  //   'click',
+  //   bgColorChange,
+  //   false
+  // );
+
+  context.fillStyle = bgColorChange();
+  context.fillRect(0, 0, canvas.width, canvas.height);
+
   snake.x += snake.dx;
   snake.y += snake.dy;
 
@@ -67,9 +76,8 @@ function loop() {
   context.fillStyle = appleColorChange();
   context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
 
-  context.fillStyle = 'green';
+  context.fillStyle = snakeColorChange();
   snake.cells.forEach(function (cell, index) {
-    snakeColorChange();
     context.fillRect(cell.x, cell.y, grid - 1, grid - 1);
 
     if (cell.x === apple.x && cell.y === apple.y) {
@@ -149,31 +157,34 @@ function snakeColorChange() {
 
   if (snakeColorValue === 'yellow') {
     context.fillStyle = '#ffff00';
-    context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
+    // context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
   } else if (snakeColorValue === 'orange') {
     context.fillStyle = '#ffa500';
-    context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
+    // context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
   } else if (snakeColorValue === 'redOrange') {
     context.fillStyle = '#ff5349';
-    context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
+    // context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
   } else if (snakeColorValue === 'red') {
     context.fillStyle = '#ff0000';
-    context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
+    // context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
   } else if (snakeColorValue === 'redViolet') {
     context.fillStyle = '#c71585';
-    context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
+    // context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
   } else if (snakeColorValue === 'violet') {
     context.fillStyle = '#ee82ee';
-    context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
+    // context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
   } else if (snakeColorValue === 'blueViolet') {
     context.fillStyle = '#8a2be2';
-    context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
+    // context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
   } else if (snakeColorValue === 'blue') {
     context.fillStyle = '#0000ff';
-    context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
+    // context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
   } else if (snakeColorValue === 'blueGreen') {
     context.fillStyle = '#0d98ba';
-    context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
+    // context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
+  } else {
+    context.fillStyle = '#00ff00';
+    // context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
   }
 }
 
@@ -183,64 +194,66 @@ function appleColorChange() {
   switch (appleColorValue) {
     case 'appleColor':
       context.fillStyle = '#ff0000';
-      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      // context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
       break;
 
     case 'yellow':
       context.fillStyle = '#ffff00';
-      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      // context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
       break;
     case 'orange':
       context.fillStyle = '#ffa500';
-      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      // context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
       break;
     case 'redOrange':
       context.fillStyle = '#ff5349';
-      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      // context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
       break;
-    case 'black':
-      context.fillStyle = '#000';
-      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+    case 'whiteSmoke':
+      context.fillStyle = '#f5f5f5';
+      // context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
       break;
     case 'redViolet':
       context.fillStyle = '#c71585';
-      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      // context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
       break;
     case 'violet':
       context.fillStyle = '#ee82ee';
-      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      // context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
       break;
     case 'blueViolet':
       context.fillStyle = '#8a2be2';
-      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      // context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
       break;
     case 'blue':
       context.fillStyle = '#0000ff';
-      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      // context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
       break;
     case 'blueGreen':
       context.fillStyle = '#0d98ba';
-      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      // context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
       break;
     default:
       context.fillStyle = '#ff0000';
-      context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      // context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
       break;
   }
 }
 
 function bgColorChange() {
-  color.addEventListener('click', (e) => {
-    // e.preventDefault();
-    let inputColor = bgColor.value;
-    console.log(inputColor);
+  let inputColor = bgColor.value;
 
+  if (inputColor === '') {
+    context.fillStyle = 'black';
+  } else {
     context.fillStyle = inputColor;
-    context.fillRect(0, 0, canvas.width, canvas.height);
-  });
+  }
+  // let inputColor = bgColor.addEventListener('input', (e) => e.preventDefault())
+  // console.log(inputColor);
 }
 
 requestAnimationFrame(loop);
 
 // context.fillStyle = bgColorChange();
 // context.fillRect(0, 0, canvas.width, canvas.height);
+// context.clearRect(0, 0, canvas.width, canvas.height);

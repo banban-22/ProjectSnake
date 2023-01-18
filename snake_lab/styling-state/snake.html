@@ -4,76 +4,85 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
 
     <link rel="stylesheet" href="./snake.css" />
     <title>Snake Lab: Styling State</title>
   </head>
   <body>
     <h1 class="title">Snake Lab: Styling State</h1>
-<main>
-  <div class="options" >
-      <select id="speed" onChange="changeSpeed()">
-        <option value="select1">Speed</option>
-        <option value="fast">fast</option>
-        <option value="medium">medium</option>
-        <option value="slow">slow</option>
-        <option value="turtle">turtle</option>
-      </select>
-      <select id="size" onChange="changeSize()">
-        <option value="select2">Size</option>
-        <option value="bigBoard">Big Board</option>
-        <option value="mediumBoard">Medium Board</option>
-        <option value="smallBoard">Small board</option>
-        <option value="tinyBoard">Tiny Board</option>
-      </select>
-      <select id="snakeColor" >
-        <option value="snakeColor">Snake Color</option>
-        <option value="yellow">yellow</option>
-        <option value="orange">orange</option>
-        <option value="redOrange">red orange</option>
-        <option value="red">red</option>
-        <option value="redViolet">red violet</option>
-        <option value="violet">violet</option>
-        <option value="blueViolet">blueViolet</option>
-        <option value="blue">blue</option>
-        <option value="blueGreen">blueGreen</option>
-      </select>
-      <select id="appleColor" >
-        <option value="appleColor">Apple Color</option>
-        <option value="yellow">yellow</option>
-        <option value="orange">orange</option>
-        <option value="redOrange">red orange</option>
-        <option value="black">black</option>
-        <option value="redViolet">red violet</option>
-        <option value="violet">violet</option>
-        <option value="blueViolet">blue violet</option>
-        <option value="blue">blue</option>
-        <option value="blueGreen">blue green</option>
-      </select>
-    </div>
+    <main>
+      <div class="options">
+        <select id="speed" onChange="changeSpeed()">
+          <option value="select1" class="optionClass">Speed</option>
+          <option value="fast" class="optionClass">fast</option>
+          <option value="medium" class="optionClass">medium</option>
+          <option value="slow" class="optionClass">slow</option>
+          <option value="turtle" class="optionClass">turtle</option>
+        </select>
+        <select id="size" onChange="changeSize()">
+          <option value="select2" class="optionClass">Size</option>
+          <option value="bigBoard" class="optionClass">Big Board</option>
+          <option value="mediumBoard" class="optionClass">Medium Board</option>
+          <option value="smallBoard" class="optionClass">Small board</option>
+          <option value="tinyBoard" class="optionClass">Tiny Board</option>
+        </select>
+        <select id="snakeColor">
+          <option value="snakeColor" class="optionClass">Snake Color</option>
+          <option value="yellow" class="optionClass">yellow</option>
+          <option value="orange" class="optionClass">orange</option>
+          <option value="redOrange" class="optionClass">red orange</option>
+          <option value="red" class="optionClass">red</option>
+          <option value="redViolet" class="optionClass">red violet</option>
+          <option value="violet" class="optionClass">violet</option>
+          <option value="blueViolet" class="optionClass">blueViolet</option>
+          <option value="blue" class="optionClass">blue</option>
+          <option value="blueGreen" class="optionClass">blueGreen</option>
+        </select>
+        <select id="appleColor">
+          <option value="appleColor">Apple Color</option>
+          <option value="yellow" class="yellowBg">yellow</option>
+          <option value="orange" class="orangeBg">orange</option>
+          <option value="redOrange" class="redOrangeBg">red orange</option>
+          <option value="smokeWhite" class="smokeWhiteBg">smoke white</option>
+          <option value="redViolet" class="redVioletBg">red violet</option>
+          <option value="violet" class="violetBg">violet</option>
+          <option value="blueViolet" class="blueVioletBg">blue violet</option>
+          <option value="blue" class="blueBg">blue</option>
+          <option value="blueGreen" class="blueGreenBg">blue green</option>
+        </select>
+      </div>
 
-    <div class="bgColor-options">
-        <input type="text" id="bgColor" placeholder="Background Color" />
-        <input type="submit" id="color" value="Change Color" onClick="bgColorChange()">
-      </form>
-    </div>
+      <div class="bgColor-options">
+        <form>
+          <input type="text" id="bgColor" placeholder="Background Color" />
+          <input
+            type="button"
+            id="color"
+            value="Change Color"
+            onclick="bgColorChange()"
+          />
+        </form>
+      </div>
 
-    <div class="canvas-container">
-    <canvas
-      id="game"
-      width="400"
-      height="400"
-      style="border: 1px solid black"
-    ></canvas>
-    </div>
-    
-    <div>
-      <p class="userScore">Score: 0</p>
-    </div>
-  </main>
-  <script src="./snake.js"></script>
+      <div class="canvas-container">
+        <canvas
+          id="game"
+          width="400"
+          height="400"
+          style="border: 1px solid white"
+        ></canvas>
+      </div>
+
+      <div>
+        <p class="userScore">Score: 0</p>
+      </div>
+    </main>
+    <script src="./snake.js"></script>
   </body>
 </html>

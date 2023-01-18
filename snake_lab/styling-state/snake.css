@@ -9,12 +9,21 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: #000;
 }
 
 .title {
   font-family: 'Teko', sans-serif;
   margin: 0 auto;
   text-align: center;
+  color: #fff;
+}
+
+.userScore {
+  font-family: 'Teko', sans-serif;
+  margin: 0 auto;
+  text-align: center;
+  color: #fff;
 }
 
 .options {
@@ -74,10 +83,39 @@ option {
   border-radius: 1rem;
   border: none;
   background: #bcdfce;
-  box-shadow: 5px 5px 5px #c0c0c1;
+  box-shadow: 3px 3px 2px #c0c0c1;
   cursor: pointer;
 }
 
 #color:active {
   transform: translateY(3px);
+}
+
+#appleColor > option.yellowBg {
+  background-color: #ffff00;
+}
+
+#appleColor .orangeBg {
+  background-color: #ffa500;
+}
+#appleColor .redOrangeBg {
+  background-color: #ff5349;
+}
+#appleColor .smokeWhiteBg {
+  background-color: #f5f5f5;
+}
+#appleColor .redVioletBg {
+  background-color: #c71585;
+}
+#appleColor .violetBg {
+  background-color: #ee82ee;
+}
+#appleColor .blueVioletBg {
+  background-color: #8a2be2;
+}
+#appleColor .blueBg {
+  background-color: #0000ff;
+}
+#appleColor .blueGreenBg {
+  background-color: #0d98ba;
 }
