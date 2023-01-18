@@ -46,10 +46,15 @@
         align-items: center;
       }
 
-      .bgColor-options {
+      .bgColor-options form {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: center;
+        align-items: center;
+      }
+
+      #bgColor {
+        padding: 0.5rem 1rem;
       }
 
       .canvas-container {
@@ -265,7 +270,7 @@
               snake.x = 160;
               snake.y = 160;
               snake.cells = [];
-              snake.maxCells = 4;
+              snake.maxCells = 1;
               snake.dx = grid;
               snake.dy = 0;
 

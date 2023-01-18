@@ -90,7 +90,7 @@ function loop() {
         snake.x = 160;
         snake.y = 160;
         snake.cells = [];
-        snake.maxCells = 4;
+        snake.maxCells = 1;
         snake.dx = grid;
         snake.dy = 0;
 

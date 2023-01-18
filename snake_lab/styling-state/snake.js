@@ -90,7 +90,7 @@ function loop() {
         snake.x = 160;
         snake.y = 160;
         snake.cells = [];
-        snake.maxCells = 4;
+        snake.maxCells = 1;
         snake.dx = grid;
         snake.dy = 0;
 
@@ -157,9 +157,6 @@ function snakeColorChange() {
   } else if (snakeColorValue === 'orange') {
     context.fillStyle = '#ffa500';
     snakeColor.style.backgroundColor = '#ffa500';
-  }  else if (snakeColorValue === 'red') {
-    context.fillStyle = '#ff0000';
-    snakeColor.style.backgroundColor = '#ff0000';
   } else if (snakeColorValue === 'redViolet') {
     context.fillStyle = '#c71585';
     snakeColor.style.backgroundColor = '#c71585';
@@ -175,6 +172,9 @@ function snakeColorChange() {
   } else if (snakeColorValue === 'blueGreen') {
     context.fillStyle = '#0d98ba';
     snakeColor.style.backgroundColor = '#0d98ba';
+  } else if (snakeColorValue === 'cyan') {
+    context.fillStyle = '#00FFFF';
+    snakeColor.style.backgroundColor = '#00FFFF';
   } else {
     context.fillStyle = '#00ff00';
   }
@@ -196,11 +196,6 @@ function appleColorChange() {
       context.fillStyle = '#ffa500';
       appleColor.style.backgroundColor = '#ffa500';
       break;
-          case 'smokeWhite':
-      context.fillStyle = '#f5f5f5';
-      appleColor.style.backgroundColor = '#f5f5f5';
-      appleColor.style.color = '#000';
-      break;
     case 'redViolet':
       context.fillStyle = '#c71585';
       appleColor.style.backgroundColor = '#c71585';
@@ -220,6 +215,10 @@ function appleColorChange() {
     case 'blueGreen':
       context.fillStyle = '#0d98ba';
       appleColor.style.backgroundColor = '#0d98ba';
+      break;
+    case 'cyan':
+      context.fillStyle = '#00FFFF';
+      appleColor.style.backgroundColor = '#00FFFF';
       break;
     default:
       context.fillStyle = '#ff0000';
