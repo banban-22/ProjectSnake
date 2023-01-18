@@ -7,7 +7,6 @@ const appleColor = document.getElementById('appleColor');
 const bgColor = document.getElementById('bgColor');
 const color = document.getElementById('color');
 const userScore = document.querySelector('.userScore');
-// const myScore = document.getElementById('score');
 
 const grid = 16;
 let count = 0;
@@ -40,6 +39,9 @@ function loop() {
   count = 0;
 
   context.clearRect(0, 0, canvas.width, canvas.height);
+
+  // context.fillStyle = bgColorChange();
+  // context.fillRect(0, 0, canvas.width, canvas.height);
 
   snake.x += snake.dx;
   snake.y += snake.dy;
@@ -230,18 +232,18 @@ function appleColorChange() {
   }
 }
 
-function bgColorChange() {
-  color.addEventListener('click', (e) => {
-    // e.preventDefault();
-    let inputColor = bgColor.value;
-    console.log(inputColor);
+// color.addEventListener('click', () => {
+//   bgColorInit = bgColor.value;
+// });
 
-    context.fillStyle = inputColor;
-    context.fillRect(0, 0, canvas.width, canvas.height);
-  });
-}
+// function bgColorChange() {
+//   let inputColor = bgColorInit;
+
+//   if (inputColor === '') {
+//     context.fillStyle = 'black';
+//   } else {
+//     context.fillStyle = inputColor;
+//   }
+// }
 
 requestAnimationFrame(loop);
-
-// context.fillStyle = bgColorChange();
-// context.fillRect(0, 0, canvas.width, canvas.height);
