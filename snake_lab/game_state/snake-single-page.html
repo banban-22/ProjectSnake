@@ -37,8 +37,8 @@
       let userSpeed = 6;
 
       let snake = {
-        x: 100,
-        y: 100,
+        x: 160,
+        y: 160,
         dx: grid,
         dy: 0,
         // keep track of all grids the snake body occupies
@@ -46,8 +46,8 @@
         maxCells: 1,
       };
       let apple = {
-        x: 100,
-        y: 100,
+        x: 160,
+        y: 160,
       };
 
       function getRandomInt(min, max) {
@@ -85,11 +85,6 @@
           snake.y = 0;
         }
 
-        /* snake.cells.unshift({ x: snake.x, y: snake.y });
-
-        if (snake.cells.length > snake.maxCells) {
-          snake.cells.pop();
-        } */
         // snake body movement
         const snakeBodyMovement = () => {
           snake.cells.unshift({ x: snake.x, y: snake.y });
@@ -126,39 +121,54 @@
               snake.x = 160;
               snake.y = 160;
               snake.cells = [];
-              snake.maxCells = 4;
+              snake.maxCells = 1;
               snake.dx = grid;
               snake.dy = 0;
 
-              apple.x = getRandomInt(0, 25) * grid;
-              apple.y = getRandomInt(0, 25) * grid;
+              apple.x = getRandomInt(0, canvas.width / 16) * grid;
+              apple.y = getRandomInt(0, canvas.height / 16) * grid;
             }
           }
         });
       }
 
       document.addEventListener('keydown', function (e) {
-        if (e.which === 37 && snake.dx === 0) {
-          // arrow left
+        // arrow left
+        if (
+          (e.which === 37 && snake.dx === 0) ||
+          (e.key == 'a' && snake.dx === 0)
+        ) {
           snake.dx = -grid;
           snake.dy = 0;
-        } else if (e.which === 38 && snake.dy === 0) {
-          // arrow right
-          snake.dy = -grid;
-          snake.dx = 0;
-        } else if (e.which === 39 && snake.dx === 0) {
-          // arrow up
+        }
+        // arrow up
+        else if (
+          (e.which === 39 && snake.dx === 0) ||
+          (e.key == 'w' && snake.dx === 0)
+        ) {
           snake.dx = grid;
           snake.dy = 0;
-        } else if (e.which === 40 && snake.dy === 0) {
-          // arrow down
+        }
+        // arrow right
+        else if (
+          (e.which === 38 && snake.dy === 0) ||
+          (e.key == 'd' && snake.dy === 0)
+        ) {
+          snake.dy = -grid;
+          snake.dx = 0;
+        }
+        // arrow down
+        else if (
+          (e.which === 40 && snake.dy === 0) ||
+          (e.key == 's' && snake.dy === 0)
+        ) {
           snake.dy = grid;
           snake.dx = 0;
         }
       });
 
       // starting the game
-      requestAnimationFrame(loop);
+      requestAnimationFrame(loop)
     </script>
   </body>
 </html>
