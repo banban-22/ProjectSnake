@@ -8,6 +8,7 @@ const bgColor = document.getElementById('bgColor');
 const color = document.getElementById('color');
 const userScore = document.querySelector('.userScore');
 
+let bgColorInit = 'black';
 const grid = 16;
 let count = 0;
 let userSpeed = 6;
@@ -39,12 +40,6 @@ function loop() {
   count = 0;
 
   context.clearRect(0, 0, canvas.width, canvas.height);
-
-  // context.canvas.fillStyle = context.bgColor.addEventListener(
-  //   'click',
-  //   bgColorChange,
-  //   false
-  // );
 
   context.fillStyle = bgColorChange();
   context.fillRect(0, 0, canvas.width, canvas.height);
@@ -157,34 +152,34 @@ function snakeColorChange() {
 
   if (snakeColorValue === 'yellow') {
     context.fillStyle = '#ffff00';
-    // context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
+    snakeColor.style.backgroundColor = '#ffff00';
+    snakeColor.style.color = '#000';
   } else if (snakeColorValue === 'orange') {
     context.fillStyle = '#ffa500';
-    // context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
+    snakeColor.style.backgroundColor = '#ffa500';
   } else if (snakeColorValue === 'redOrange') {
     context.fillStyle = '#ff5349';
-    // context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
+    snakeColor.style.backgroundColor = '#ff5349';
   } else if (snakeColorValue === 'red') {
     context.fillStyle = '#ff0000';
-    // context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
+    snakeColor.style.backgroundColor = '#ff0000';
   } else if (snakeColorValue === 'redViolet') {
     context.fillStyle = '#c71585';
-    // context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
+    snakeColor.style.backgroundColor = '#c71585';
   } else if (snakeColorValue === 'violet') {
     context.fillStyle = '#ee82ee';
-    // context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
+    snakeColor.style.backgroundColor = '#ee82ee';
   } else if (snakeColorValue === 'blueViolet') {
     context.fillStyle = '#8a2be2';
-    // context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
+    snakeColor.style.backgroundColor = '#8a2be2';
   } else if (snakeColorValue === 'blue') {
     context.fillStyle = '#0000ff';
-    // context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
+    snakeColor.style.backgroundColor = '#0000ff';
   } else if (snakeColorValue === 'blueGreen') {
     context.fillStyle = '#0d98ba';
-    // context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
+    snakeColor.style.backgroundColor = '#0d98ba';
   } else {
     context.fillStyle = '#00ff00';
-    // context.fillRect(snake.x, snake.y, grid - 1, grid - 1);
   }
 }
 
@@ -194,66 +189,63 @@ function appleColorChange() {
   switch (appleColorValue) {
     case 'appleColor':
       context.fillStyle = '#ff0000';
-      // context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
       break;
-
     case 'yellow':
       context.fillStyle = '#ffff00';
-      // context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      appleColor.style.backgroundColor = '#ffff00';
+      appleColor.style.color = '#000';
       break;
     case 'orange':
       context.fillStyle = '#ffa500';
-      // context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      appleColor.style.backgroundColor = '#ffa500';
       break;
     case 'redOrange':
       context.fillStyle = '#ff5349';
-      // context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      appleColor.style.backgroundColor = '#ff5349';
       break;
-    case 'whiteSmoke':
+    case 'smokeWhite':
       context.fillStyle = '#f5f5f5';
-      // context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      appleColor.style.backgroundColor = '#f5f5f5';
+      appleColor.style.color = '#000';
       break;
     case 'redViolet':
       context.fillStyle = '#c71585';
-      // context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      appleColor.style.backgroundColor = '#c71585';
       break;
     case 'violet':
       context.fillStyle = '#ee82ee';
-      // context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      appleColor.style.backgroundColor = '#ee82ee';
       break;
     case 'blueViolet':
       context.fillStyle = '#8a2be2';
-      // context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      appleColor.style.backgroundColor = '#8a2be2';
       break;
     case 'blue':
       context.fillStyle = '#0000ff';
-      // context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      appleColor.style.backgroundColor = '#0000ff';
       break;
     case 'blueGreen':
       context.fillStyle = '#0d98ba';
-      // context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+      appleColor.style.backgroundColor = '#0d98ba';
       break;
     default:
       context.fillStyle = '#ff0000';
-      // context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
       break;
   }
 }
 
+color.addEventListener('click', () => {
+  bgColorInit = bgColor.value;
+});
+
 function bgColorChange() {
-  let inputColor = bgColor.value;
+  let inputColor = bgColorInit;
 
   if (inputColor === '') {
     context.fillStyle = 'black';
   } else {
     context.fillStyle = inputColor;
   }
-  // let inputColor = bgColor.addEventListener('input', (e) => e.preventDefault())
-  // console.log(inputColor);
 }
 
 requestAnimationFrame(loop);
-
-// context.fillStyle = bgColorChange();
-// context.fillRect(0, 0, canvas.width, canvas.height);
-// context.clearRect(0, 0, canvas.width, canvas.height);
